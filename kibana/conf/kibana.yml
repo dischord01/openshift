@@ -1,0 +1,2 @@
+elasticsearch.url: 'http://172.30.56.108:9200'
+xpack.security.enabled: false
