@@ -20,16 +20,16 @@ metricbeat.modules:
     - load
 
     # Per CPU core stats
-    #- core
+    - core
 
     # IO stats
-    #- diskio
+    - diskio
 
     # Per filesystem stats
     - filesystem
 
     # File system summary stats
-    #- fsstat
+    - fsstat
 
     # Memory stats
     - memory
@@ -78,7 +78,8 @@ metricbeat.modules:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["172.30.140.127:5044"]
+  hosts: ["${LOGSTASH_HOST}"]
+  index: "metricbeat"
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

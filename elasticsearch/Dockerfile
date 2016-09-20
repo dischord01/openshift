@@ -8,7 +8,7 @@ RUN echo "deb http://packages.elastic.co/elasticsearch/5.x/debian stable main" >
 
 RUN set -x \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends elasticsearch 
+	&& apt-get install -y --no-install-recommends elasticsearch htop
 
 LABEL io.openshift.min-memory 1Gi
 LABEL io.openshift.tags elasticsearch
@@ -38,6 +38,9 @@ EXPOSE 9200 9300
 
 RUN chmod -R og+w /usr/share/elasticsearch
 USER 1000
-
+ENV ESHOSTS=127.0.0.1
+ENV ESMASTERS=3
+ENV ESDATA=/usr/share/elasticsearch/data
 ENTRYPOINT ["/docker-entrypoint.sh"]
+#CMD ["elasticsearch","-E","discovery.zen.ping.unicast.hosts=$ESHOST"]
 CMD ["elasticsearch"]

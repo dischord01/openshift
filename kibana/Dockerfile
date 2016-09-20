@@ -26,10 +26,10 @@ ENV PATH /opt/kibana/bin:$PATH
 
 COPY docker-entrypoint.sh /
 RUN /opt/kibana/bin/kibana-plugin install x-pack
+COPY conf/kibana.yml /opt/kibana/conf/kibana.yml
 
 EXPOSE 5601
 
-COPY conf/kibana.yml /opt/kibana/conf/kibana.yml
 RUN chmod -R og+w /opt/kibana
 USER 1000
 

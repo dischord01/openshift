@@ -228,7 +228,8 @@ output:
   logstash:
     # The Logstash hosts
     #hosts: ["172.17.42.1:5044"]
-    hosts: ["172.30.140.127:5044"]
+    hosts: ["${LOGSTASH_HOST}"]
+    index: "filebeat"
 
     # Number of workers per Logstash host.
     #worker: 1
